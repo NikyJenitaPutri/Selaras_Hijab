@@ -8,24 +8,26 @@ $perPage = 5;
 $page = max(1, (int)($_GET['page'] ?? 1));
 $offset = ($page - 1) * $perPage;
 
-// Search berdasarkan ID atau Nama produk
+// Pastikan offset dan perPage aman (non-negatif dan integer)
+if ($offset < 0 || $perPage <= 0) {
+    die('Invalid pagination parameters.');
+}
+
 $keyword = trim($_GET['search'] ?? '');
+
 if ($keyword !== '') {
-    $stmt = $pdo->prepare("
-        SELECT * FROM produk 
-        WHERE ID LIKE :keyword OR Nama LIKE :keyword 
-        ORDER BY ID DESC 
-        LIMIT :offset, :perPage
-    ");
+    $sql = "SELECT * FROM produk 
+            WHERE ID LIKE :keyword OR Nama LIKE :keyword 
+            ORDER BY ID DESC 
+            LIMIT $offset, $perPage";
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
 } else {
-    $stmt = $pdo->prepare("SELECT * FROM produk ORDER BY ID DESC LIMIT :offset, :perPage");
+    $sql = "SELECT * FROM produk ORDER BY ID DESC LIMIT $offset, $perPage";
+    $stmt = $pdo->prepare($sql);
 }
-$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-$stmt->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 $stmt->execute();
 $produk = $stmt->fetchAll();
-
 // Total data untuk pagination
 $totalStmt = $pdo->prepare($keyword !== '' ? 
     "SELECT COUNT(*) FROM produk WHERE ID LIKE :keyword OR Nama LIKE :keyword" : 
