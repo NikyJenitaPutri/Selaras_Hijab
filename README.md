@@ -5,7 +5,7 @@ Selaras Hijab – Toko Hijab Online
 
 Aplikasi web sederhana untuk menampilkan katalog produk hijab dan memungkinkan admin mengelola produk melalui dashboard. Pengguna dapat melihat detail produk dan langsung menghubungi admin via WhatsApp untuk pemesanan.
 
-## Fitur yang tersedia
+## Fitur Yang Tersedia
 ### Pengunjung :
     
     1. Tampilan utama dengan hero section dan navigasi responsif.
@@ -86,22 +86,25 @@ Aplikasi web sederhana untuk menampilkan katalog produk hijab dan memungkinkan a
                 => Harga
                 => Deskripsi
                 => Nama file foto (dan pratinjau gambar jika tersedia)
+                => jika berhasil mengedit produk maka akan menampilkan pesan sukses dan mengarahkan kembali ke dashboard.
 
 
         # Hapus
             Halaman ini berfungsi menghapus produk tertentu dari database secara permanen, termasuk menghapus file foto produk dari server jika tersedia. Ada pesan konfirmasi apakah yakin untuk menghapus produk. Jika berhasil maka akan menampilkan pesan sukses dan mengarahkan kembali ke dashboard. 
 
 ## Kebutuhan sistem 
-    - Web server (Laragon)
+    - Server Lokal : Laragon
     - PHP ≥ 8.0
     - MySQL
     - Browser modern (Chrome, Firefox, Safari, Edge)
 
-## Cara instalasi dan konfigurasi
-    1. Clone atau unduh repositori ini ke direktori web server Anda
+## Cara Instalasi dan Konfigurasi
+    1. Clone atau unduh repositori ini ke direktori server lokal Anda
+
     2. Buat database di MySQL:
         CREATE DATABASE selaras_hijab;
         USE selaras_hijab;
+
     3. Import struktur tabel : 
         CREATE TABLE produk (
             ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -111,13 +114,16 @@ Aplikasi web sederhana untuk menampilkan katalog produk hijab dan memungkinkan a
             Foto_Produk VARCHAR(255),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
-    4. Buat file konfigurasi config.php di root folder
+
+    4. Buat file konfigurasi config.php
+
     5. Buat folder uploads
+
     6. Akses aplikasi via browser: 
-        http://localhost/selaras-hijab
+        http://localhost/Selaras_Hijab
     
-## Struktur folder 
-    /selaras-hijab/
+## Struktur Folder 
+    /Selaras_Hijab/
     ├── config.php 
     ├── index.php   
     ├── login.php   
@@ -135,7 +141,7 @@ Aplikasi web sederhana untuk menampilkan katalog produk hijab dan memungkinkan a
     └── README.md
 
 
-## Contoh environment config.
+## Contoh Environment Config.
 ''' $host = 'localhost';
 $db   = 'selaras_hijab';
 $user = 'root';
@@ -143,7 +149,7 @@ $pass = '';
 $charset = 'utf8mb4';
 '''
 
-## Screenshot aplikasi minimal satu
+## Screenshot Aplikasi
 ![alt text](/Tampilan_Web/Beranda.png)
 
 ![alt text](/Tampilan_Web/Cara%20Order.png)
