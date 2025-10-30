@@ -123,21 +123,22 @@ Aplikasi web sederhana untuk menampilkan katalog produk hijab dan memungkinkan a
         http://localhost/Selaras_Hijab
     
 ## Struktur Folder 
-    /Selaras_Hijab/
-    ├── config.php 
-    ├── index.php   
-    ├── login.php   
-    ├── dashboard.php 
+    Selaras_Hijab/
+    ├── img/                       # Gambar statis (hero, testimoni, dll)
+    ├── uploads/                   # Folder untuk menyimpan foto produk yang diupload
+    ├── tampilan_web/              # Folder untuk menyimpan screenshot tampilan web                  
+    ├── config.php
+    ├── dashboard.php
     ├── tambah_produk.php 
+    ├── detail_produk.php
     ├── edit_produk.php 
     ├── hapus_produk.php 
-    ├── detail_produk.php 
+    ├── index.php   
+    ├── login.php     
     ├── logout.php              
     ├── style.css       
-    ├── script.js     
-    ├── uploads/ 
-    ├── img/                    
-        # Gambar statis (hero, testimoni, dll)
+    ├── script.js
+    ├── Selaras_Hijab.sql    
     └── README.md
 
 
